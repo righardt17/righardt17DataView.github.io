@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" href="./data-view-icon-circle.png" />
+  </head>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!--The accordian menu inside the sidebar navigator-->
+  <style>
+    .accordion {
+      background-color: #111;
+      color: #818181;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 20px;
+      transition: 0.4s;
+    }
+
+    .active,
+    .accordion:hover {
+      background-color: rgb(58, 108, 173);
+      color: white;
+    }
+
+    .panel {
+      padding: 0px;
+      background-color: #111;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      font-size: 1px;
+    }
+  </style>
+  <div class="logo" id="logo">
+    <!--<h2>DataView</h2>-->
+    <img src="./DataView-Logo-White-250x51.png" alt="" />
+  </div>
+
+  <nav class="navbar" id="myNavbar">
+    <a class="navBtn" href="index.html">Home</a>
+    <a class="navBtn active" href="#" onclick="openNav()"><span style="color: orangered;">▼ </span>Analysis</a>
+    <a class="navBtn" href="about.html">About</a>
+    <a class="navBtn" href="contact.html">Contact</a>
+    <a class="navBtn" href="help.html">Help</a>
+    <a class="topLink" href="#top"><span style="color: white; text-align: right;">Top</span></a>
+  </nav>
+
+  <aside id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+      >&times;</a
+    >
+    <a class="accordion" href="#"
+      >Introduction <span id="downArrow" style="color: orangered">▼</span></a
+    >
+    <div class="panel">
+      <ul>
+        <li><a href="descriptive.html">Descriptive Analysis</a></li>
+        <li><a href="inferential.html">Inferential Analysis</a></li>
+        <li><a href="diagnostic.html">Diagnostic Analysis</a></li>
+        <li><a href="predictive.html">Predictive Analysis</a></li>
+        <li><a href="prescriptive.html">Prescriptive Analysis</a></li>
+      </ul>
+    </div>
+
+    <a class="accordion" href="#"
+      >Operational <span id="downArrow" style="color: orangered">▼</span></a
+    >
+    <div class="panel">
+      <ul>
+        <li><a href="demand-forecast.html">Demand Forecasting</a></li>
+        <li><a href="inventory-management.html">Inventory Management</a></li>
+        <li><a href="marketing-strategies.html">Marketing Strategies</a></li>
+        <li><a href="workforce-allocation.html">Workforce Allocation</a></li>
+      </ul>
+    </div>
+    <a class="accordion" href="#"
+      >Financial <span id="downArrow" style="color: orangered">▼</span></a
+    >
+    <div class="panel">
+      <ul>
+        <li><a href="cashflow.html">Cashflow</a></li>
+        <li><a href="investment-risk.html">Investment Risk</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!--Make the sideNavbar stick to the top when scrolling-->
+  <script>
+    window.onscroll = function () {
+      myFunction();
+    };
+
+    var navbar = document.getElementById("myNavbar");
+    var sticky = navbar.offsetTop;
+    var sideNavbar = document.getElementById("mySidenav");
+    var sideSticky = sideNavbar.offsetTop;
+    var logo = document.getElementById("logo");
+    var logoSticky = logo.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky");
+        sideNavbar.classList.add("sideSticky");
+        logo.classList.add("logoSticky");
+      } else {
+        navbar.classList.remove("sticky");
+        sideNavbar.classList.remove("sideSticky");
+        logo.classList.remove("logoSticky");
+      }
+    }
+  </script>
+
+  <!-- right side navigation bar-->
+  <style>
+    #myRightSidenav a {
+      position: fixed;
+      right: -20px;
+      transition: 0.3s;
+      padding: 15px;
+      width: 100px;
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+      border-radius: 5px 0px 0px 5px;
+    }
+  
+    #myRightSidenav a:hover {
+      right: 0;
+    }
+  
+    #descriptive {
+      top: 200px;
+      background-color: rgb(58, 108, 173);
+    }
+  
+    #inferential {
+      top: 260px;
+      background-color: rgb(58, 108, 173);
+    }
+  
+    #diagnostic {
+      top: 320px;
+      background-color: black;
+      outline: auto orangered;
+    }
+  
+    #predictive {
+      top: 380px;
+      background-color: rgb(58, 108, 173);
+    }
+  
+    #prescriptive {
+      top: 440px;
+      background-color: rgb(58, 108, 173);
+    }
+  
+    #selected {
+      position: fixed;
+      top: 306px;
+      right: 120px;
+      color: orangered;
+      text-align: right;
+    }
+  </style>
+  <div id="myRightSidenav" class="rightSideNav">
+    <a href="descriptive.html" id="descriptive">Descriptive</a>
+    <a href="inferential.html" id="inferential">Inferential</a>
+    <a href="diagnostic.html" id="diagnostic">Diagnostic</a>
+    <a href="predictive.html" id="predictive">Predictive</a>
+    <a href="prescriptive.html" id="prescriptive">Prescriptive</a>
+  </div>
+  <h1 id="selected">●</h1>
+
+  <!-- Use any element to open the sidenav -->
+  <span onclick="openNav()"></span>
+
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+  <div class="page-contents" id="main">
+
+    <h1 class="dataViewHeading">Diagnostic Analysis</h1>
+    
+    <body style="background-color: lightsteelblue;">
+    </body>
+
+    <h4 class="introAbout" style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">
+      Diagnostic analysis’ main objective is to derive an answer as to why certain events/problems occurred by identifying the
+      causes thereof. This is achieved by using the insight gathered from statistical analysis (descriptive and inferential). <br></br>It is a
+      valuable tool in terms of analysing the patterns that may exist in a dataset, which may then be documented and
+      associated with the occurrence of an event/problem. These documented patterns will help to identify problems that may
+      show resemblance and therefore be subject to a similar prescription (Guru99, 2019). Hence, the establishment of detailed
+      information is critical to diagnostic analysis as this mitigates the iteration of work and interconnects problems –
+      leading to time and cost savings. Examples of diagnostic analysis in business applications include:
+
+      <ul style="color: orangered;">
+        <li><span style="color: black;">A freight company investigating the cause of slow shipments in a specific region</li>
+        <li><span style="color: black;">
+            A SaaS company establishing which marketing activities increased trials (Gibson, n.d.)</li>
+      </ul>
+      
+    </h4>
+    
+    <!--References-->
+    <h2 class="referencesHead">References</h2>
+    <h4 class="referencesBody">
+      Gibson, P., n.d. Types of Data Analysis | Tutorial by Chartio [WWW Document]. Chartio. URL
+      <a href="https://chartio.com/learn/data-analytics/types-of-data-analysis/">https://chartio.com/learn/data-analytics/types-of-data-analysis/</a> (accessed 4.11.20).
+      <br></br>
+      Guru99, 2019. What is Data Analysis? Types, Process, Methods, Techniques [WWW Document]. Guru99. URL
+      <a href="https://www.guru99.com/what-is-data-analysis.html">https://www.guru99.com/what-is-data-analysis.html</a> (accessed 4.10.20).
+
+    </h4>
+    <h2 style="color: lightsteelblue;">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, perspiciatis
+      laboriosam distinctio id, magnam ea eius enim placeat praesentium quasi debitis facilis aperiam fugiat? Non molestias
+      vero odio cumque fuga.Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, perspiciatis
+      laboriosam distinctio id, magnam ea eius enim placeat praesentium quasi debitis facilis aperiam fugiat? Non molestias
+      vero odio cumque fuga.</h2>
+
+    <script src="https://unpkg.com/d3@5.16.0/dist/d3.min.js"></script>
+    <!-- <input type="file" id="fileinput" />
+          <div style="position: relative;">
+            <canvas id="lineChart" width="200px" height="80px"></canvas>
+          </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+          <script type="module" src="main.js"></script>
+          -->
+  </div>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+  </script>
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+  <script>
+    // Get the container element
+    var btnContainer = document.getElementById("myNavbar");
+
+    // Get all buttons with class="btn" inside the container
+    var btns = btnContainer.getElementsByClassName("navBtn");
+
+    // Loop through the buttons and add the active class to the current/clicked button
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+  </script>
+</html>

@@ -1,0 +1,793 @@
+/*------------------------------------------------------*/
+/*Home Section*/
+/*------------------------------------------------------*/
+body {
+  background-color: lightsteelblue); 
+  margin: 0px;
+}
+.dataViewHeading {
+  margin-top: 40px;
+  text-align: center;
+  color: rgb(51, 81, 172);
+  font-weight:bolder;
+  font-size: 2.8em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+  border-bottom: 2px solid orangered;
+  max-width: 63%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+}
+
+.paragraph {
+  text-align: justify; 
+  max-width: 61%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.dataAnalysisProcHeading {
+   margin-top: 20px;
+  text-align: center;
+  color: rgb(51, 81, 172);
+  font-weight:bolder;
+  font-size: 2.8em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+  border-bottom: 2px solid orangered;
+  padding-bottom: 10px;
+  max-width: 63%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  border-top: 2px solid orangered;
+}
+
+.dataAnalysisProcess {
+display: block;
+max-width: 100%;
+max-height: 100%; 
+outline: black solid 2px;
+margin-bottom: 0%;
+max-width: 63%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.dataAnProcStepsHead {
+  margin-top: 1px;
+  background-color: rgb(0, 18, 56) ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 2px;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 63%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.procStepText {
+  background-color:lightblue;
+  margin-top: 1px;
+  outline: black solid 2px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-bottom: 1px;
+  text-align: justify; 
+  max-width: 61%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.referencesHead {
+  margin-top: 40px;
+  background-color: orangered ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 2px;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+.referencesBody {
+background-color:white;
+  margin-top: 1px;
+  outline: black solid 2px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 1%;
+  padding-right: 1%;
+  margin-bottom: 1px;
+}
+
+/*------------------------------------------------------*/
+/*Analysis Section*/
+/*------------------------------------------------------*/
+
+.forecastHeading h1 {
+  margin-top: 40px;
+  text-align: center;
+  color: rgb(51, 81, 172);
+  font-weight:bolder;
+  font-size: 2.8em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+}
+.modelHeading {
+  margin-top: 0px;
+  background-color: rgb(0, 18, 56) ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 2px;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.inputHeading {
+  margin-top: 40px;
+  background-color: orangered ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 2px;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.inputSec {
+  margin-top: 0px;
+  background-color: white ;
+  color: black;
+  padding-top: 16px;
+  padding-bottom: 0px;
+  text-align: center;
+  margin-bottom: 0px;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.sticky {
+  position: fixed;
+  width: 100%;
+  outline: solid orangered 3px;
+   z-index: 1; /* Stay on top */
+  top: 77px; /*original = 0*/
+}
+
+.logoSticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /*outline: solid orangered 3px;*/
+   z-index: 1; /* Stay on top */
+  top: 0;
+}
+
+h4 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ast {
+  color: rgb(0, 0, 0);
+  
+}
+.note {
+  color: red;
+}
+
+.resHeading {
+  margin-top: 0px;
+  background-color: rgb(0, 18, 56) ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 2px;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.td {
+  font-size: 0.8em;
+  /*font-weight:bolder;*/
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.sumPCIheading {
+  background-color: darkorange;
+  color: black;
+  padding-top: 8px;
+  padding-left: 10px;
+  padding-bottom: 7px;
+  text-align: center;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 2px;
+}
+.PCIwarning {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  text-align: justify;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 2px;
+ 
+}
+.bestModel {
+  padding-top: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 8px;
+  text-align: justify;
+  margin-bottom: 2px;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 2px;
+  font-size: 0.8em;
+}
+
+.sesHeading  {
+  margin-top: 60px;
+  background-color: rgb(0, 18, 56) ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.sesSub {
+  background-color: rgb(13, 71, 99) ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0em;
+  margin-bottom: 2px;
+}
+
+.sesSubSub {
+  
+  background-color: rgb(58, 127, 161) ;
+  color: white;
+  padding-top: 8px;
+  padding-left: 10px;
+  padding-bottom: 8px;
+  text-align: left;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0em;
+}
+.femSub {
+  color: black;
+  font-size: smaller;
+}
+.dash {
+  color: rgb(255, 244, 85);
+}
+
+.holtHeading {
+  margin-top: 60px;
+  background-color: rgb(0, 18, 56) ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.holtSub {
+  background-color: rgb(13, 71, 99) ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0em;
+  margin-bottom: 2px;
+}
+.holtSubSub {
+  
+  background-color: rgb(58, 127, 161) ;
+  color: white;
+  padding-top: 8px;
+  padding-left: 10px;
+  padding-bottom: 8px;
+  text-align: left;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0em;
+}
+
+.whHeading {
+  margin-top: 60px;
+  background-color: rgb(0, 18, 56) ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.whSub {
+  background-color: rgb(13, 71, 99) ;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0em;
+  margin-bottom: 2px;
+}
+.whSubSub {
+  
+  background-color: rgb(58, 127, 161) ;
+  color: white;
+  padding-top: 8px;
+  padding-left: 10px;
+  padding-bottom: 8px;
+  text-align: left;
+  margin-bottom: 0em;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0em;
+}
+
+form{
+  background-color: #555;
+  padding-top: 9px;
+  padding-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 2px;
+  color: white;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  text-align: left;
+ 
+}
+label {
+  font-weight: bolder;
+   font-family: Arial, Helvetica, sans-serif;
+   background-color: rgb(58, 108, 173);
+   padding: 10px;
+   width: 100%;
+   color: rgb(255, 187, 0);
+  
+}
+output{
+  padding: 10px;
+  
+}
+
+canvas.graph {
+  padding-top:10px;
+  padding-bottom: 10px;
+
+}
+
+div.logo {
+   text-align: center;
+   background-color: rgb(0, 18, 56) ;
+   image-rendering: crisp-edges;
+   image-resolution: inherit;
+   margin: 0;
+   overflow: auto;
+   font-family: Arial, Helvetica, sans-serif;
+   color: white;
+   padding-top: 10px;
+   padding-bottom: 10px;
+ 
+}
+
+aside {
+  position: relative;
+  float:left;
+  top:0px;
+  bottom: 0px;
+}
+
+nav {
+  background-color: #555;
+  font-size: 1.5em;
+  font-family: Arial, Helvetica, sans-serif;
+  /*word-spacing: 0em;*/
+  color: white;
+  float: left;
+}
+
+/* Style the navigation menu */
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+ 
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: 10.3%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  text-align: center; /* If you want the text to be centered */
+
+}
+
+/* Add a background color on mouse-over */
+.navbar a:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+/* Style the current/active link */
+.navbar a.active {
+  background-color:rgb(58, 108, 173) ;
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left; /* If you want the text to be left-aligned on small screens */
+  }
+}
+
+
+/* The side navigation menu */
+.sidenav {
+  position: fixed; /* Stay in place */
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 56px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 118.5px;
+   overflow: scroll;
+}
+.sideSticky {
+  position: fixed;
+  outline: solid orangered 3px;
+  margin-top: 124px; /*original = 47*/
+  overflow: scroll;
+
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #929292;  /*#818181*/
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+ a.active,
+    .accordion:hover  {
+      background-color: rgb(58, 108, 173);
+      color: white;
+      
+    }
+
+.pdfBut {
+  margin-top: 40px;
+  margin-bottom: 4px;
+  outline: solid orangered 2px;
+  font-weight:bolder;
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+/*Modal section*/
+:root {
+      --modal-duration: 1s;
+      --modal-color: rgb(58, 108, 173);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      margin: 10% auto;
+      width: 60%;
+      box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
+        0 7px 20px 0 rgba(0, 0, 0, 0.17);
+      animation-name: modalopen;
+      animation-duration: var(--modal-duration);
+    }
+
+    .modal-header h2,
+    .modal-footer h3 {
+      margin: 0;
+    }
+
+    .modal-header {
+      background: var(--modal-color);
+      padding: 15px;
+      color: #fff;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .modal-body {
+      padding: 10px 20px;
+      background: #fff;
+    }
+
+    .modal-footer {
+      background: var(--modal-color);
+      padding: 10px;
+      color: #fff;
+      text-align: center;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    .close {
+      color: #ccc;
+      float: right;
+      font-size: 30px;
+      color: #fff;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    @keyframes modalopen {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+.desHead {
+  text-align: center;
+  max-width:  61%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1%;
+  padding-right: 1%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+
+    }
+/*------------------------------------------------------*/
+/*About Section*/
+/*------------------------------------------------------*/
+.toolHeading1 {
+  margin-top: 20px;
+  text-align: center;
+  color: rgb(51, 81, 172);
+  font-weight:bolder;
+  font-size: 2.8em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+  max-width:  63%;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 2px solid orangered;
+padding-top: 10px;
+}
+.toolHeading {
+  margin-top: 20px;
+  text-align: center;
+  color: rgb(51, 81, 172);
+  font-weight:bolder;
+  font-size: 2.8em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+  max-width:  63%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.introAbout{
+max-width:  61%;
+margin-left: auto;
+margin-right: auto;
+text-align: justify;
+padding-left: 1%;
+padding-right: 1%;
+
+}
+.toolStructureImg {
+display: block;
+max-width: 63%;
+max-height: 63%; 
+outline: black solid 2px;
+margin-bottom: 0%;
+margin-left: auto;
+margin-right: auto;
+}
+.toolRoadmapImg {
+display: block;
+max-width: 63%;
+max-height: 63%; 
+outline: black solid 2px;
+margin-bottom: 0%;
+margin-left: auto;
+margin-right: auto;
+}
+.toolFeaturesImg {
+display: block;
+max-width: 63%;
+max-height: 63%; 
+outline: black solid 2px;
+margin-bottom: 0%;
+margin-left: auto;
+margin-right: auto;
+}
+.note {
+  margin-top: 1px;
+  color: maroon;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*------------------------------------------------------*/
+/*Contact Section*/
+/*------------------------------------------------------*/
+.contactsHead {
+max-width:  61%;
+margin-left: auto;
+margin-right: auto;
+padding-left: 1%;
+padding-right: 1%;
+font-family: Arial, Helvetica, sans-serif;
+color: #000;
+}
+.gForm{
+  display: block;
+  max-width:  60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contacts{
+max-width:  61%;
+margin-left: auto;
+margin-right: auto;
+padding-left: 1%;
+padding-right: 1%;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*------------------------------------------------------*/
+/*Help Section*/
+/*------------------------------------------------------*/
+.helpHead {
+max-width:  61%;
+margin-left: auto;
+margin-right: auto;
+padding-left: 1%;
+padding-right: 1%;
+font-family: Arial, Helvetica, sans-serif;
+color: #000;
+}
+
+.topLink{
+  position: absolute;
+  
+  padding:0px;
+  background-color: #555;
+  right: 0px;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+
+

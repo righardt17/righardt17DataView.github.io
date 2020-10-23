@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DataView</title>
+    <link rel="icon" href="./data-view-icon-circle.png" />
+  </head>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!--The accordian menu inside the sidebar navigator-->
+  <style>
+    .accordion {
+      background-color: #111;
+      color: #818181;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 20px;
+      transition: 0.4s;
+    }
+
+    .active,
+    .accordion:hover {
+      background-color: rgb(58, 108, 173);
+      color: white;
+    }
+
+    .panel {
+      padding: 0px;
+      background-color: #111;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      font-size: 1px;
+    }
+  </style>
+  <div class="logo" id="logo">
+    <!--<h2>DataView</h2>-->
+    <img src="./DataView-Logo-White-250x51.png" alt="" />
+  </div>
+
+  <nav class="navbar" id="myNavbar">
+    <a class="navBtn" href="index.html">Home</a>
+    <a class="navBtn active" href="#" onclick="openNav()"><span style="color: orangered;">▼ </span>Analysis</a>
+    <a class="navBtn" href="about.html">About</a>
+    <a class="navBtn" href="contact.html">Contact</a>
+    <a class="navBtn" href="help.html">Help</a>
+    <a class="topLink" href="#top"><span style="color: white; text-align: right;">Top</span></a>
+  </nav>
+
+  <aside id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+      >&times;</a
+    >
+    <a class="accordion" href="#"
+      >Introduction <span id="downArrow" style="color: orangered">▼</span></a
+    >
+    <div class="panel">
+      <ul>
+        <li><a href="descriptive.html">Descriptive Analysis</a></li>
+        <li><a href="inferential.html">Inferential Analysis</a></li>
+        <li><a href="giagnostic.html">Diagnostic Analysis</a></li>
+        <li><a href="predictive.html">Predictive Analysis</a></li>
+        <li><a href="prescriptive.html">Prescriptive Analysis</a></li>
+      </ul>
+    </div>
+
+    <a class="accordion" href="#"
+      >Operational <span id="downArrow" style="color: orangered">▼</span></a
+    >
+    <div class="panel">
+      <ul>
+        <li><a href="demand-forecast.html">Demand Forecasting</a></li>
+        <li><a href="inventory-management.html">Inventory Management</a></li>
+        <li><a href="#marketing-strategies.html">Marketing Strategies</a></li>
+        <li><a href="workforce-allocation.html">Workforce Allocation</a></li>
+      </ul>
+    </div>
+    <a class="accordion" href="#"
+      >Financial <span id="downArrow" style="color: orangered">▼</span></a
+    >
+    <div class="panel">
+      <ul>
+        <li><a href="cashflow.html">Cashflow</a></li>
+        <li><a href="investment-risk.html">Investment Risk</a></li>
+      </ul>
+    </div>
+    <div style="color: #111">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit labore
+      atque corrupti dolorem? Adipisci perferendis ab incidunt quo, totam esse
+      maxime facilis necessitatibus pariatur molestias cupiditate autem eligendi
+      magni placeat.
+    </div>
+    <div style="color: #111">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+  </aside>
+
+  <!--Make the sideNavbar stick to the top when scrolling-->
+
+  <script>
+    window.onscroll = function () {
+      myFunction();
+    };
+
+    var navbar = document.getElementById("myNavbar");
+    var sticky = navbar.offsetTop;
+    var sideNavbar = document.getElementById("mySidenav");
+    var sideSticky = sideNavbar.offsetTop;
+    var logo = document.getElementById("logo");
+    var logoSticky = logo.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky");
+        sideNavbar.classList.add("sideSticky");
+        logo.classList.add("logoSticky");
+      } else {
+        navbar.classList.remove("sticky");
+        sideNavbar.classList.remove("sideSticky");
+        logo.classList.remove("logoSticky");
+      }
+    }
+  </script>
+
+  <!-- Use any element to open the sidenav -->
+  <span onclick="openNav()"></span>
+
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+  <div class="page-contents" id="main">
+    <div class="forecastHeading">
+      <h1>Demand Forecasting</h1>
+    </div>
+
+    <h2 class="modelHeading">Forecast Methods Utilised</h2>
+    <table>
+      <thead>
+        <tr style="background-color: rgb(175, 174, 174)">
+          <th>Method</th>
+          <th>Applicability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="background-color: lightblue">
+            Simple Exponential Smoothing (SES)
+          </td>
+          <td style="text-align: left">
+            The SES forecasting method is utilised to forecast demand that has
+            <span style="color: red">no</span> outright
+            <span style="color: red">trend</span> or
+            <span style="color: red">seasonality</span>. Thus, it is approriate
+            to use for demand that varies period to priod with no noticeable
+            trend or seasonality.
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: lightblue">Holt's Model</td>
+          <td style="text-align: left">
+            Holt's model forecasting method is utilised to forecast demand that
+            has a <span style="color: green">visible trend</span> but
+            <span style="color: red">no seasonality</span>. Thus, it is
+            approriate to use for demand that has a visible upward or downward
+            trajectory with no noticeable seasonality.
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: lightblue">Winter's Model</td>
+          <td style="text-align: left">
+            Winter's model forecasting method is utilised to forecast demand
+            that has a <span style="color: green">visible trend</span> and
+            <span style="color: green">seasonality</span>. Thus, it is
+            approriate to use for demand that has a visible upward or downward
+            trajectory combined with a noticeable seasonality.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 class="inputHeading">Input: Demand Data</h2>
+    <h4 class="inputSec">
+      Please provide the CSV file containing the input data for the demand
+      forecast analysis (historic sales data).  See the "<span style="color: orangered; font-weight: bolder;">Help</span>" section for data file format. <br />
+      <span class="ast">*</span><span class="note" style="font-weight: bolder;">NOTE</span
+      ><span class="ast">*</span> - Please clear the CSV file via the
+      "<span style="font-weight: bolder; color: rgb(38, 0, 255)">Clear</span>"
+      button before changing files.
+      <br />
+      <br />
+      <div style="margin: 0px; background-color: lightsalmon; padding: 8px">
+        <input type="file" id="fileinput" onchange="return fileValidation()" />
+        <button id="clearBtn">Clear</button>
+      </div>
+    </h4>
+    <!--Validates File extension-->
+    <div id="my-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Attention</h2>
+        </div>
+        <div class="modal-body">
+          <p
+            style="
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: larger;
+              font-weight: bolder;
+            "
+          >
+            The input file does not meet the file extension requirement.
+          </p>
+          <p style="font-family: Arial, Helvetica, sans-serif">
+            The file must be of type 'CSV'. Please visit the 'Help' section for
+            more information or press the button below.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button style="font-size: larger"><a href="help.html" style="text-decoration: none;"><span style="color: black;">Help</span></a></button>
+        </div>
+      </div>
+    </div>
+    <script>
+      function fileValidation() {
+        let fileInput = document.getElementById("fileinput");
+
+        let filePath = fileInput.value;
+
+        // Allowing file type
+        let allowedExtensions = /(\.csv)$/i;
+
+        if (!allowedExtensions.exec(filePath)) {
+          fileInput.value = "";
+          //alert("Invalid file type");
+
+          // Get DOM Elements
+          const modal = document.querySelector("#my-modal");
+          const modalBtn = document.querySelector("#modal-btn");
+          const closeBtn = document.querySelector(".close");
+
+          // Events
+          //modalBtn.addEventListener("click", openModal);
+          openModal();
+          closeBtn.addEventListener("click", closeModal);
+          window.addEventListener("click", outsideClick);
+
+          // Open
+          function openModal() {
+            modal.style.display = "block";
+          }
+
+          // Close
+          function closeModal() {
+            modal.style.display = "none";
+          }
+
+          // Close If Outside Click
+          function outsideClick(e) {
+            if (e.target == modal) {
+              modal.style.display = "none";
+            }
+          }
+
+          return false;
+        } else {
+          return true;
+        }
+      }
+    </script>
+    <body>
+      <style>
+        body {
+          background-color: lightsteelblue;
+        }
+      </style>
+      <script src="https://unpkg.com/d3@5.16.0/dist/d3.min.js"></script>
+      <script src="https://www.unpkg.com/zodiac@0.1.16/dist/zodiac.bundle.min.js"></script>
+
+      <script>
+        //bind event handler to clear button
+        document.getElementById("clearBtn").addEventListener(
+          "click",
+          function () {
+            // document.getElementById("fileinput").value = null;
+            //document.getElementById("sesGraph").value = null;
+            location.reload();
+          },
+          false
+        );
+      </script>
+      <!--______________________________________________________-->
+
+      <!--IMPORT library to create a PDF-->
+      <script src="html2pdf.js-master\dist\html2pdf.bundle.js"></script>
+      <!--Script that retrieves section to be prited to pdf-->
+      <script>
+        function generatePDF() {
+          // Choose the element that our invoice is rendered in.
+          let today = new Date();
+          let pdfFileName =
+            String(today.getDate()).padStart(2, "0") +
+            "-" +
+            String(today.getMonth() + 1).padStart(2, "0") +
+            "-" +
+            today.getFullYear() +
+            "_Demand_Forecast_Results";
+          //let sesGraphPrint = document.getElementById("sesGraph");
+          let element = document.getElementById("pdfPrint");
+
+          // sesGraphClone.style.width = "790px";
+          //sesGraphClone.style.height = "300px";
+          //element.appendChild(sesGraphClone);
+
+          // Choose the element and save the PDF for our user.
+          html2pdf()
+            .set({ html2canvas: { scale: 4 } })
+            .from(element)
+            .save(pdfFileName);
+        }
+      </script>
+
+      <!--PDF button which generates the PDF CONTENTS-->
+      <div>
+        <button class="pdfBut" onclick="generatePDF()">
+          Download Results Summary as PDF
+        </button>
+        <div src="element"></div>
+      </div>
+
+      <!--Results Summary-->
+      <div id="pdfPrint">
+        <h2 class="resHeading">Results Summary</h2>
+        <h3 class="sesSubSub">
+          Forecast Demand Results:
+          <span style="color: black">*</span
+          ><span style="color: red">Raw values</span
+          ><span style="color: black">*</span
+          ><span style="color: black; font-size: smaller">
+            - Not rounded to the nearest unit</span
+          >
+        </h3>
+        <table>
+          <col />
+          <colgroup span="12"></colgroup>
+          <td rowspan="2"></td>
+          <th
+            colspan="12"
+            scope="colgroup"
+            style="background-color: rgb(175, 174, 174)"
+          >
+            Period
+          </th>
+          <!--
+        <thead>
+          <tr>
+            <th style="color: white;">Forecasting Method</th>
+            <th>Period</th>
+          </tr>
+        </thead>
+        -->
+          <tbody id="sumForcTableData"></tbody>
+        </table>
+
+        <h3 class="sesSubSub">Error Measures</h3>
+        <table>
+          <thead>
+            <tr style="background-color: rgb(175, 174, 174)">
+              <th>Forecasting Method</th>
+              <th>MSE</th>
+              <th>MAD</th>
+              <th>MAPE(%)</th>
+              <th>TS Range</th>
+              <th>Average TS</th>
+              <th>Feasibility</th>
+            </tr>
+          </thead>
+          <tbody id="sumErrTableData"></tbody>
+        </table>
+
+        <h4
+          class="bestModel"
+          style="background-color: white; color: black; font-size: 1em"
+        >
+          The best fitting model for the dataset with regards to the MAPE value
+          is:
+          <span id="bestModelName" style="color: orangered"></span>
+        </h4>
+        <h3 class="sesSubSub">Prediction Confidence Intervals</h3>
+        <h4 class="PCIwarning" style="background-color: maroon; color: white">
+          These values are only valid for use if the
+          <span style="color: orange">TS values are in the range of ±6</span>
+          and the
+          <span style="color: orange"
+            >error distribution has somewhat of a bell curved shape </span
+          >(<span style="color: rgb(0, 255, 0)">approximate normal</span> -
+          which is verified by a
+          <span style="color: rgb(0, 255, 0)">kurtosis value near zero</span>).
+          Inspect the Error Distribution and Error Measure tables to establish
+          validity.
+        </h4>
+        <h4 class="sumPCIheading">SES</h4>
+        <table>
+          <col />
+          <colgroup span="12"></colgroup>
+          <td rowspan="1"></td>
+          <th
+            colspan="9"
+            scope="colgroup"
+            style="background-color: rgb(175, 174, 174)"
+          >
+            Confidence Intervals
+          </th>
+          <tr>
+            <th style="background-color: rgb(175, 174, 174)">Period</th>
+            <th style="background-color: lightgray">50%</th>
+            <th style="background-color: lightgray">68%</th>
+            <th style="background-color: lightgray">75%</th>
+            <th style="background-color: lightgray">80%</th>
+            <th style="background-color: lightgray">85%</th>
+            <th style="background-color: lightgray">90%</th>
+            <th style="background-color: lightgray">95%</th>
+            <th style="background-color: lightgray">98%</th>
+            <th style="background-color: lightgray">99%</th>
+          </tr>
+
+          <tbody id="sesSumPCItableData"></tbody>
+        </table>
+        <h4 class="sumPCIheading">Holt's Model</h4>
+        <table>
+          <col />
+          <colgroup span="12"></colgroup>
+          <td rowspan="1"></td>
+          <th
+            colspan="9"
+            scope="colgroup"
+            style="background-color: rgb(175, 174, 174)"
+          >
+            Confidence Intervals
+          </th>
+          <tr>
+            <th style="background-color: rgb(175, 174, 174)">Period</th>
+            <th style="background-color: lightgray">50%</th>
+            <th style="background-color: lightgray">68%</th>
+            <th style="background-color: lightgray">75%</th>
+            <th style="background-color: lightgray">80%</th>
+            <th style="background-color: lightgray">85%</th>
+            <th style="background-color: lightgray">90%</th>
+            <th style="background-color: lightgray">95%</th>
+            <th style="background-color: lightgray">98%</th>
+            <th style="background-color: lightgray">99%</th>
+          </tr>
+
+          <tbody id="holtSumPCItableData"></tbody>
+        </table>
+        <h4 class="sumPCIheading">Winter's Model</h4>
+        <table>
+          <col />
+          <colgroup span="12"></colgroup>
+          <td rowspan="1"></td>
+          <th
+            colspan="9"
+            scope="colgroup"
+            style="background-color: rgb(175, 174, 174)"
+          >
+            Confidence Intervals
+          </th>
+          <tr>
+            <th style="background-color: rgb(175, 174, 174)">Period</th>
+            <th style="background-color: lightgray">50%</th>
+            <th style="background-color: lightgray">68%</th>
+            <th style="background-color: lightgray">75%</th>
+            <th style="background-color: lightgray">80%</th>
+            <th style="background-color: lightgray">85%</th>
+            <th style="background-color: lightgray">90%</th>
+            <th style="background-color: lightgray">95%</th>
+            <th style="background-color: lightgray">98%</th>
+            <th style="background-color: lightgray">99%</th>
+          </tr>
+
+          <tbody id="whSumPCItableData"></tbody>
+        </table>
+      </div>
+
+      <!--______________________________________________________-->
+      <!--SES Forecasting section-->
+      <h2 class="sesHeading">Simple Exponential Smoothing (SES) Method</h2>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> Demand in units </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Period </output>
+        <label for="alpha">Alpha (α):</label>
+        <output id="sesOptAlpha"> - </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="sesGraph"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <h2 class="sesSub">SES Error Distribution</h2>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> Error Frequency </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Forecast Error </output>
+        <label for="kurtosis">Kurtosis:</label>
+        <output id="sesKurtosis"> - </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="sesErrorDist"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <style>
+        table {
+          margin-top: 2px;
+          margin-bottom: 2px;
+          border-collapse: collapse;
+          width: 100%;
+          background-color: white;
+          /*border: 2px solid black;*/
+          font-family: Arial, Helvetica, sans-serif;
+          outline-style: solid;
+          outline-color: black;
+          outline-width: 2px;
+        }
+        td,
+        th {
+          border: 1px solid slategrey;
+          padding: 8px;
+          font-weight: bold;
+        }
+        tbody {
+          text-align: center;
+        }
+      </style>
+      <h2 class="sesSub">SES Error Measures</h2>
+      <table>
+        <thead>
+          <tr style="background-color: rgb(175, 174, 174)">
+            <th>MSE</th>
+            <th>MAD</th>
+            <th>MAPE(%)</th>
+            <th>TS Range</th>
+            <th>Average TS</th>
+          </tr>
+        </thead>
+        <tbody id="sesTableData"></tbody>
+      </table>
+      <h2 class="sesSub">SES Forecast Error Monitoring</h2>
+      <h3 class="sesSubSub">
+        Control Chart (3σ) <span class="dash">>>></span>
+        <span class="femSub">Identify non-random error in forecasts</span>
+      </h3>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> Error </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Period </output>
+
+        <label for="ucl">UCL:</label>
+        <output id="sesUCL"> - </output>
+        <label for="lcl">LCL:</label>
+        <output id="sesLCL"> - </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="sesControlChart"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <h3 class="sesSubSub">
+        Test Signal (TS) Chart <span class="dash">>>></span>
+        <span class="femSub"
+          >Detect forecast bias: [<span
+            style="color: rgb(2, 255, 23); padding: 2px"
+            >+</span
+          >] over forecasting & [<span
+            style="color: rgb(255, 0, 0); padding: 2px"
+            >-</span
+          >] under forecasting</span
+        >
+      </h3>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> TS Value </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Period </output>
+        <label for="ucl">UCL:</label>
+        <output> +6 </output>
+        <label for="lcl">LCL:</label>
+        <output> -6 </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="sesTSChart"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <!--______________________________________________________-->
+      <!--Holt's Model Forecasting section-->
+      <h2 class="holtHeading">Holt's Model (Trend-Corrected)</h2>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> Demand in units </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Period </output>
+        <label for="alpha">Alpha (α):</label>
+        <output id="holtOptAlpha"> - </output>
+        <label for="beta">Beta (β):</label>
+        <output id="holtOptBeta"> - </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="holtGraph"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <h2 class="holtSub">Holt's Error Distribution</h2>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> Error Frequency </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Forecast Error </output>
+        <label for="kurtosis">Kurtosis:</label>
+        <output id="holtKurtosis"> - </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="holtErrorDist"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <h2 class="holtSub">Holt's Error Measures</h2>
+      <table>
+        <thead>
+          <tr style="background-color: rgb(175, 174, 174)">
+            <th>MSE</th>
+            <th>MAD</th>
+            <th>MAPE(%)</th>
+            <th>TS Range</th>
+            <th>Average TS</th>
+          </tr>
+        </thead>
+        <tbody id="holtTableData"></tbody>
+      </table>
+      <h2 class="holtSub">Holt's Forecast Error Monitoring</h2>
+      <h3 class="holtSubSub">
+        Control Chart (3σ) <span class="dash">>>></span>
+        <span class="femSub">Identify non-random error in forecasts</span>
+      </h3>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> Error </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Period </output>
+
+        <label for="ucl">UCL:</label>
+        <output id="holtUCL"> - </output>
+        <label for="lcl">LCL:</label>
+        <output id="holtLCL"> - </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="holtControlChart"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <h3 class="holtSubSub">
+        Test Signal (TS) Chart <span class="dash">>>></span>
+        <span class="femSub"
+          >Detect forecast bias: [<span
+            style="color: rgb(2, 255, 23); padding: 2px"
+            >+</span
+          >] over forecasting & [<span
+            style="color: rgb(255, 0, 0); padding: 2px"
+            >-</span
+          >] under forecasting</span
+        >
+      </h3>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> TS Value </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Period </output>
+        <label for="ucl">UCL:</label>
+        <output> +6 </output>
+        <label for="lcl">LCL:</label>
+        <output> -6 </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="holtTSChart"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <!--______________________________________________________-->
+      <!--Winter Holt's Model Forecasting section-->
+      <h2 class="whHeading">
+        Winter's Model (Trend-and Seasonality-Corrected)
+      </h2>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> Demand in units </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Period </output>
+        <label for="alpha">Alpha (α):</label>
+        <output id="whOptAlpha"> - </output>
+        <label for="beta">Beta (β):</label>
+        <output id="whOptBeta"> - </output>
+        <label for="gamma">Gamma (γ):</label>
+        <output id="whOptGamma"> - </output>
+      </form>
+      <form action="">
+        <label for="periodicity">Periodicity (p):</label>
+        <output id="periodicity"> - </output>
+        <label for="sCycles"># Complete Seasonal Cycles (r):</label>
+        <output id="seasCycles"> - </output>
+      </form>
+      <div style="position: relative">
+        <canvas class="graph" id="whGraph" width="200px" height="80px"></canvas>
+      </div>
+      <h2 class="holtSub">Winter's Error Distribution</h2>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> Error Frequency </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Forecast Error </output>
+        <label for="kurtosis">Kurtosis:</label>
+        <output id="whKurtosis"> - </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="whErrorDist"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <h2 class="whSub">Winter's Error Measures</h2>
+      <table>
+        <thead>
+          <tr style="background-color: rgb(175, 174, 174)">
+            <th>MSE</th>
+            <th>MAD</th>
+            <th>MAPE(%)</th>
+            <th>TS Range</th>
+            <th>Average TS</th>
+          </tr>
+        </thead>
+        <tbody id="whTableData"></tbody>
+      </table>
+      <h2 class="whSub">Winter's Forecast Error Monitoring</h2>
+      <h3 class="whSubSub">
+        Control Chart (3σ) <span class="dash">>>></span>
+        <span class="femSub">Identify non-random error in forecasts</span>
+      </h3>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> Error </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Period </output>
+
+        <label for="ucl">UCL:</label>
+        <output id="whUCL"> - </output>
+        <label for="lcl">LCL:</label>
+        <output id="whLCL"> - </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="whControlChart"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <h3 class="whSubSub">
+        Test Signal (TS) Chart <span class="dash">>>></span>
+        <span class="femSub"
+          >Detect forecast bias: [<span
+            style="color: rgb(2, 255, 23); padding: 2px"
+            >+</span
+          >] over forecasting & [<span
+            style="color: rgb(255, 0, 0); padding: 2px"
+            >-</span
+          >] under forecasting</span
+        >
+      </h3>
+      <form action="">
+        <label for="yAxis">Y-axis:</label>
+        <output> TS Value </output>
+        <label for="xAxis">X-axis:</label>
+        <output> Period </output>
+        <label for="ucl">UCL:</label>
+        <output> +6 </output>
+        <label for="lcl">LCL:</label>
+        <output> -6 </output>
+      </form>
+      <div style="position: relative">
+        <canvas
+          class="graph"
+          id="whTSChart"
+          width="200px"
+          height="80px"
+        ></canvas>
+      </div>
+      <!--______________________________________________________-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+      <script type="module" src="demandForecast.js"></script>
+    </body>
+  </div>
+
+  <!--Side nav-->
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+  </script>
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+  <script>
+    // Get the container element
+    var btnContainer = document.getElementById("myNavbar");
+
+    // Get all buttons with class="btn" inside the container
+    var btns = btnContainer.getElementsByClassName("navBtn");
+
+    // Loop through the buttons and add the active class to the current/clicked button
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+  </script>
+</html>

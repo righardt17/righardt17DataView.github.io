@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DataView</title>
+    <link rel="icon" href="./data-view-icon-circle.png" />
+</head>
+
+<link rel="stylesheet" href="styles.css" />
+
+<!--The accordian menu inside the sidebar navigator-->
+<style>
+    .accordion {
+        background-color: #111;
+        color: #818181;
+        cursor: pointer;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 20px;
+        transition: 0.4s;
+    }
+
+    .active,
+    .accordion:hover {
+        background-color: rgb(58, 108, 173);
+        color: white;
+    }
+
+    .panel {
+        padding: 0px;
+        background-color: #111;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        font-size: 1px;
+    }
+</style>
+<div class="logo" id="logo">
+    <!--<h2>DataView</h2>-->
+    <img src="./DataView-Logo-White-250x51.png" alt="" />
+</div>
+
+<nav class="navbar" id="myNavbar">
+    <a class="navBtn" href="index.html">Home</a>
+    <a class="navBtn active" href="#" onclick="openNav()"><span style="color: orangered;">▼ </span>Analysis</a>
+    <a class="navBtn" href="about.html">About</a>
+    <a class="navBtn" href="contact.html">Contact</a>
+    <a class="navBtn" href="help.html">Help</a>
+    <a class="topLink" href="#top"><span style="color: white; text-align: right;">Top</span></a>
+</nav>
+
+<aside id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a class="accordion" href="#">Introduction <span id="downArrow" style="color: orangered;">▼</span></a>
+    <div class="panel">
+        <ul>
+            <li><a href="descriptive.html">Descriptive Analysis</a></li>
+            <li><a href="inferential.html">Inferential Analysis</a></li>
+            <li><a href="diagnostic.html">Diagnostic Analysis</a></li>
+            <li><a href="predictive.html">Predictive Analysis</a></li>
+            <li><a href="prescriptive.html">Prescriptive Analysis</a></li>
+        </ul>
+    </div>
+
+    <a class="accordion" href="#">Operational <span id="downArrow" style="color: orangered;">▼</span></a>
+    <div class="panel">
+        <ul>
+            <li><a href="demand-forecast.html">Demand Forecasting</a></li>
+            <li><a href="inventory-management.html">Inventory Management</a></li>
+            <li><a href="marketing-strategies.html">Marketing Strategies</a></li>
+            <li><a href="workforce-allocation.html">Workforce Allocation</a></li>
+        </ul>
+    </div>
+    <a class="accordion" href="#">Financial <span id="downArrow" style="color: orangered;">▼</span></a>
+    <div class="panel">
+        <ul>
+            <li><a href="cashflow.html">Cashflow</a></li>
+            <li><a href="investment-risk.html">Investment Risk</a></li>
+        </ul>
+    </div>
+    <div style="color: #111">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit labore
+        atque corrupti dolorem? Adipisci perferendis ab incidunt quo, totam esse
+        maxime facilis necessitatibus pariatur molestias cupiditate autem eligendi
+        magni placeat.
+    </div>
+    <div style="color: #111">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+</aside>
+
+<!--Make the sideNavbar stick to the top when scrolling-->
+<script>
+    window.onscroll = function () {
+        myFunction();
+    };
+
+    var navbar = document.getElementById("myNavbar");
+    var sticky = navbar.offsetTop;
+    var sideNavbar = document.getElementById("mySidenav");
+    var sideSticky = sideNavbar.offsetTop;
+    var logo = document.getElementById("logo");
+    var logoSticky = logo.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+            sideNavbar.classList.add("sideSticky");
+            logo.classList.add("logoSticky");
+        } else {
+            navbar.classList.remove("sticky");
+            sideNavbar.classList.remove("sideSticky");
+            logo.classList.remove("logoSticky");
+        }
+    }
+</script>
+
+<!-- Use any element to open the sidenav -->
+<span onclick="openNav()"></span>
+
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div class="page-contents" id="main">
+    <h1 class="dataViewHeading" style="border-bottom: none;">Investment Risk</h1>
+    <img src="wip.svg" alt="" style="display: block; margin-left: auto; margin-right: auto; margin-top: 50px;">
+    <h1 style="color: orangered; text-align: center;">Work In Progress</h1>
+    <body style="background-color: lightsteelblue;">
+    </body>
+
+</div>
+
+<script>
+    //Opens side nav bar
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+    //Closes side nav bar
+    let analy = document.getElementById("ana");
+    let con = document.getElementById("con");
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        //Set contact back to active and deselect analysis as active
+        analy.className = "navBtn";
+        con.className = "navBtn active";
+    }
+</script>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<script>
+    // Get the container element
+    var btnContainer = document.getElementById("myNavbar");
+
+    // Get all buttons with class="btn" inside the container
+    var btns = btnContainer.getElementsByClassName("navBtn");
+
+    // Loop through the buttons and add the active class to the current/clicked button
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
+
+</html>

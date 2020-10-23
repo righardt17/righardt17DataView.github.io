@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" href="./data-view-icon-circle.png" />
+  </head>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!--The accordian menu inside the sidebar navigator-->
+  <style>
+    .accordion {
+      background-color: #111;
+      color: #818181;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 20px;
+      transition: 0.4s;
+    }
+
+    .active,
+    .accordion:hover {
+      background-color: rgb(58, 108, 173);
+      color: white;
+    }
+
+    .panel {
+      padding: 0px;
+      background-color: #111;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      font-size: 1px;
+    }
+  </style>
+  <div class="logo" id="logo">
+    <!--<h2>DataView</h2>-->
+    <img src="./DataView-Logo-White-250x51.png" alt="" />
+  </div>
+
+  <nav class="navbar" id="myNavbar">
+    <a class="navBtn" href="index.html">Home</a>
+    <a class="navBtn active" href="#" onclick="openNav()"><span style="color: orangered;">▼ </span>Analysis</a>
+    <a class="navBtn" href="about.html">About</a>
+    <a class="navBtn" href="contact.html">Contact</a>
+    <a class="navBtn" href="help.html">Help</a>
+    <a class="topLink" href="#top"><span style="color: white; text-align: right;">Top</span></a>
+  </nav>
+
+  <aside id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+      >&times;</a
+    >
+    <a class="accordion" href="#"
+      >Introduction <span id="downArrow" style="color: orangered;">▼</span></a
+    >
+    <div class="panel">
+      <ul>
+        <li><a href="descriptive.html">Descriptive Analysis</a></li>
+        <li><a href="inferential.html">Inferential Analysis</a></li>
+        <li><a href="diagnostic.html">Diagnostic Analysis</a></li>
+        <li><a href="predictive.html">Predictive Analysis</a></li>
+        <li><a href="prescriptive.html">Prescriptive Analysis</a></li>
+      </ul>
+    </div>
+
+    <a class="accordion" href="#"
+      >Operational <span id="downArrow" style="color: orangered;">▼</span></a
+    >
+    <div class="panel">
+      <ul>
+        <li><a href="demand-forecast.html">Demand Forecasting</a></li>
+        <li><a href="inventory-management.html">Inventory Management</a></li>
+        <li><a href="marketing-strategies.html">Marketing Strategies</a></li>
+        <li><a href="workforce-allocation.html">Workforce Allocation</a></li>
+      </ul>
+    </div>
+    <a class="accordion" href="#"
+      >Financial <span id="downArrow" style="color: orangered;">▼</span></a
+    >
+    <div class="panel">
+      <ul>
+        <li><a href="cashflow.html">Cashflow</a></li>
+        <li><a href="investment-risk.html">Investment Risk</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!--Make the sideNavbar stick to the top when scrolling-->
+  <script>
+    window.onscroll = function () {
+      myFunction();
+    };
+
+    var navbar = document.getElementById("myNavbar");
+    var sticky = navbar.offsetTop;
+    var sideNavbar = document.getElementById("mySidenav");
+    var sideSticky = sideNavbar.offsetTop;
+    var logo = document.getElementById("logo");
+    var logoSticky = logo.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky");
+        sideNavbar.classList.add("sideSticky");
+        logo.classList.add("logoSticky");
+      } else {
+        navbar.classList.remove("sticky");
+        sideNavbar.classList.remove("sideSticky");
+        logo.classList.remove("logoSticky");
+      }
+    }
+  </script>
+  <!-- right side navigation bar-->
+  <style>
+    #myRightSidenav a {
+      position: fixed;
+      right: -20px;
+      transition: 0.3s;
+      padding: 15px;
+      width: 100px;
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+      border-radius: 5px 0px 0px 5px;
+    }
+  
+    #myRightSidenav a:hover {
+      right: 0;
+    }
+  
+    #descriptive {
+      top: 200px;
+      
+      background-color: black;
+      outline: auto orangered;
+    }
+  
+    #inferential {
+      top: 260px;
+      background-color: rgb(58, 108, 173);
+    }
+  
+    #diagnostic {
+      top: 320px;
+      background-color: rgb(58, 108, 173);
+    }
+  
+    #predictive {
+      top: 380px;
+      background-color: rgb(58, 108, 173);
+    }
+  
+    #prescriptive {
+      top: 440px;
+      background-color: rgb(58, 108, 173);
+    }
+  
+    #selected {
+      position: fixed;
+      top: 186px;
+      right: 120px;
+      color: orangered;
+      text-align: right;
+    }
+  </style>
+  <div id="myRightSidenav" class="rightSideNav">
+    <a href="descriptive.html" id="descriptive">Descriptive</a>
+    <a href="inferential.html" id="inferential">Inferential</a>
+    <a href="diagnostic.html" id="diagnostic">Diagnostic</a>
+    <a href="predictive.html" id="predictive">Predictive</a>
+    <a href="prescriptive.html" id="prescriptive">Prescriptive</a>
+  </div>
+  <h1 id="selected">●</h1>
+
+  <!-- Use any element to open the sidenav -->
+  <span onclick="openNav()"></span>
+
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+  <div class="page-contents" id="main">
+
+  <h1 class="dataViewHeading">Descriptive Analysis</h1>
+  
+  <body style="background-color: lightsteelblue;">
+  </body>
+
+  <style>
+    .desPan {
+      display: block;
+      background-color: #eee;
+      color: black;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      font-size: 15px;
+      transition: 0.4s;
+      max-width: 63%;
+      margin-left: auto;
+      margin-right: auto;
+      outline-style: auto;
+      margin-bottom: 1px;
+      
+    }
+  
+    .activeP,
+    .desPan:hover {
+      background-color: rgb(65, 115, 209);
+      color: white;
+    }
+  
+    .desPan:after {
+      content: '\002B';
+      color: black;
+      font-weight: bold;
+      float: right;
+      margin-left: 5px;
+    }
+  
+    .activeP:after {
+      content: "\2212";
+    }
+  
+    .panelG {
+      max-width: 61%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: justify;
+      line-height: 1.6;
+      padding-right: 1%;
+      padding-left: 1%;
+     
+      background-color: lightblue;
+      max-height: 0;
+      overflow: scroll;
+      transition: max-height 0.2s ease-out;
+      
+      
+  
+    }
+  </style>
+  <h4 class="introAbout" style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; border-bottom: 2px solid orangered; padding-bottom: 23px;">
+    At the foundation of data analysis and the understanding of data lies descriptive statistics. It is the most rudimentary
+    and widespread use of data in organisations today (Gibson, no date). It provides a general understanding of the
+    distribution of the data, helps identify outliers and errors, as well as enabling the determination of relationships
+    among variables (Dhand, 2015). <br></br>Descriptive statistics helps to summarise and visualise large sets of data which enables
+    it to be presented in a more meaningful way. This allows for simpler interpretations and analysis of the data.
+    Descriptive statistics do not, however, allow for conclusions to be made or generalisations that extend beyond the data.
+    It merely describes the data and what it represents (Laerd, 2018).
+    <br></br>
+    After grouping and organising the data, various statistical measures are employed to characterise it. The following
+    statistical measures of descriptive analysis may be utilised:
+
+    <ul style="color: orangered;">
+      <li><span style="color: black;">Measures of central tendency.
+      </li>
+      <li><span style="color: black;">
+          Measures of divergence from normality.</li>
+      <li><span style="color: black;">Measures of spread.</span></li>
+    </ul>
+    These basic measures lay the foundation for further statistical testing, that are of increasing complexity, and will be
+    used to derive conclusions (Shodganga, 2008).
+
+    </h4>
+
+  <!--1-->
+  <h1 class="desHead">Measures of Central Tendency</h1>
+  <h4 class="introAbout"
+    style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">
+    Central tendency is a descriptive summary of a dataset by way of a single value that indicates the centre of the data
+    distribution. It provides a comprehensive summary of the whole dataset but yields no information concerning the
+    individual values of the dataset (Gooch, 2011).
+    <br></br>
+    The mean, median and mode are the three main measures used to describe the central tendency of a dataset. Under certain
+    conditions, some measures are more suitable to use than others. This section will indicate how these three measures are calculated and describe under what conditions they are most applicable (Lund Research, 2013).
+
+  </h4>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Mean</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The mean is the most well-known measure of central tendency. Although it is mostly used with continuous data, it may
+    also be used with discrete data as well. It denotes the sum of all the values in the data set divided by the total
+    number of values present in the dataset. The mean of a dataset may be calculated using only a sample of the total
+    population, called the sample mean, or by using all the values in the dataset, referred to as the population mean. Let n
+    denote the number of values in a dataset with values of <img src="equations/x1_to_xn.svg" alt="" style="vertical-align: middle;">. The sample mean is denoted by <img src="equations/xbar.svg" alt="">,
+    pronounced “x bar”. Below is the equation used to determine the sample mean:</h4>
+    <img src="equations/eq2.1.svg" alt="" style="display: block; margin: auto;">
+    <img src="equations/nr1.svg" alt="" style="float: right; margin-top: -26px;">
+
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The equation may also be expressed with the Greek capital letter, ∑, pronounced “sigma”, which indicates “the sum of”.</h4>
+    <img src="equations/eq2.2.svg" alt="" style="display: block; margin: auto;">
+    <img src="equations/nr2.svg" alt="" style="float: right; margin-top: -26px;">
+    
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">To acknowledge that the population mean is calculated, the Greek lower-case letter “mu”, denoted as μ is used:</h4>
+    <img src="equations/eq2.3.svg" alt="" style="display: block; margin: auto;">
+    <img src="equations/nr3.svg" alt="" style="float: right; margin-top: -26px;">
+
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">As already stated, and as indicated by the formulas, the mean includes every value in the dataset. Another property of the mean is that it minimises the error involved in predicting any value in the dataset. Furthermore, it is the only measure of central tendency where the sum of the deviations of each value in the dataset from the mean value is always
+    zero.</h4>
+    <img src="equations/eq2.4.svg" alt="" style="display: block; margin: auto;">
+    <img src="equations/nr4.svg" alt="" style="float: right; margin-top: -36px;">
+
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Although regarded by many as the best measure of central tendency for quantitative data, the mean has one major disadvantage, it
+    is particularly sensitive to the influence of outliers in the dataset (Lund Research, 2013). Thus, extreme values may
+    distort the mean and therefore lead to it being disregarded as an accurate representation of the dataset. In this case,
+    it may be advised to consider other alternatives to measure central tendency (Gooch, 2011). For example, consider the
+    monthly wages of personnel in a company seen below in <span style="color: orangered;">Figure 1</span> .</h4>
+    
+    <img src="f1.svg" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%;">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span style="color: orangered;">Figure 1:</span> Example of how extreme values influence the mean of a dataset.
+    </h5>
+
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The mean monthly wage of the ten personnel is calculated as R25 400. This, however, does not accurately reflect the
+    typical monthly wage of a worker. When analysing the raw data it is evident that most personnel receive wages between
+    R12 000 to R17 000. This distortion of the mean value is due to the two outliers in the dataset, indicated in red above.
+    In this situation, the mean might not be the optimal measure of central tendency. The median (discussed next in this
+    section) would be more suitable (Lund Research, 2013). The median is also generally preferred over the mean in the case
+    of the data distribution being skew, which is discussed later on in this section and with more detail in Measures of Divergence from Normality.
+    </h4>
+    
+
+    <p style="color: lightblue; font-size:25%;line-height: 1.6;">Lorem ipsum</p>
+
+    
+  </div>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Median</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The median is the middle value in a dataset that has been arranged in order of magnitude (from the smallest to the
+    largest value). Thus, it divides the data in half and is also known as the 50th percentile. The position of the median
+    may be determined with the equation provided below, where n denotes the number of data entries in the dataset.
+    </h4>
+    <img src="equations/eq2.5.svg" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%;">
+    <img src="equations/nr5.svg" alt="" style="float: right; margin-top: -26px;">
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Extreme values and skewed data have a lesser impact on the median than on the mean. The monthly wages in <span style="color: orangered;">Figure 2</span> will be used to illustrate how the median is calculated below.
+    </h4>
+
+    <img src="f2.svg" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%;">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 2:</span> Median calculation - Raw monthly wage data.
+    </h5>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">As seen in <span style="color: orangered;">Figure 3</span>, the first step is to sort the raw data into the order of magnitude:
+    </h4>
+    <h5 style="display: block; line-height: 0;font-family: Arial, Helvetica, sans-serif; float: left; font-weight: bold; margin-top: 5px; margin-bottom: 0px"><span
+        style="color: lightblue; "></span>Ascending ----<span style="vertical-align: middle;">></span>
+    </h5>
+    <h5 style="line-height: 0;font-family: Arial, Helvetica, sans-serif; font-weight: bold; margin-bottomp: 0px; text-align: center;">Median<span style="color: lightblue;"></span>
+    </h5>
+    <h5 style="color: lightblue; margin-bottom: 0%;">123</h5>
+    <img src="f3.svg" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; margin-top: -15px;">
+    <h5
+      style="line-height: 0;font-family: Arial, Helvetica, sans-serif; font-weight: bold; margin-bottomp: 0px; text-align: center;">
+      Position 5 and 6 are at the middle mark of this dataset<span style="color: lightblue;"></span>
+    </h5>
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 3:</span> Median calculation - Monthly wage data sorted into ascending order (even number of entries).
+    </h5>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;"><span style="color: orangered;">Figure 3</span> it is seen that the median lies between positions 5 and 6. This is due to there being an even number of
+        data entries in the dataset. This is confirmed by implementing equation 2.5, which indicates that the median lies at position 5.5. The average of the values at position 5 and 6 is therefore calculated to determine the mean, which in this case results in the value of R15 000. Thus, it is apparent that the median, in this situation, is a more accurate measure of central tendency than the mean (Lund Research, 2013). 
+        <br></br>
+        In the event of a dataset containing an odd number of entries, there will only be one value at the middle mark of the
+        sorted data and therefore no average value calculation is required.
+    </h4>
+    <h5
+      style="line-height: 0;font-family: Arial, Helvetica, sans-serif; font-weight: bold; margin-bottomp: 0px; text-align: center;"><span style="color: lightblue;">........................</span>
+      Median
+    </h5>
+    <img src="f4.svg" alt=""
+      style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+      <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+          style="color: orangered;">Figure 4:</span> Median calculation - Monthly wage data sorted into ascending order (odd number of entries).
+      </h5>
+      <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">In <span style="color: orangered;">Figure 4:</span> the dataset contains 9 entries with the centre mark existing at position 5 (there are 4 values on the left- and right side of position 5). Here the median is taken as R15 000.
+      </h4>
+      
+
+    <p style="color: lightblue; font-size:25%;line-height: 0.1;">Lorem ipsum</p>
+  </div>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Mode</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The mode is the value in a dataset with the highest frequency of occurrence and is the only measure of central tendency that may be applied to categorical variables. A dataset may potentially have more than one mode, and also have none if all the categories are distinct (Kumar, 2018). On a histogram, it is depicted by the highest frequency value and therefore may be acknowledged as the most favoured option as seen in <span style="color: orangered;">Figure 5</span>.
+    </h4>
+    <img src="f5.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 5:</span> Illustration of the mode on a histogram with quantitative data (Source: Lund Research, 2013).
+    </h5>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The mode is commonly used for categorical data where there is a need to determine the most popular category as depicted
+    below in <span style="color: orangered;">Figure 6</span>.
+    </h4>
+    <img src="f6.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 6:</span> Illustration of the mode on a histogram with qualitative data modified from (Source: Lund Research, 2013)
+    </h5>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">From this particular dataset, in <span style="color: orangered;">Figure 6</span>, it is apparent that the most common means of transport is the bus. The mode
+    is not necessarily unique, which causes problems when there are two or more values that share the highest frequency,
+    such as in <span style="color: orangered;">Figure 7</span>:
+    </h4>
+    <img src="f7.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 7:</span> Two modes on a histogram with continuous data (Source: Lund Research, 2013).
+    </h5>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">In the case of two or more modes, it generates indecisiveness as to which mode best describes the central tendency of the data. This is especially problematic when working with continuous data since it is more inclined to consist of individual data values and not exhibit values with higher frequencies than others. Small continuous datasets with a large range will likely not produce a mode, while the opposite will have a higher probability of displaying one. Therefore the mode is seldomly used with continuous data (Lund Research, 2013).
+      <br></br>
+      Another problem with the mode arises when the most common data point exists far from the other data points in the set. An example of such an occurrence is shown in <span style="color: orangered;">Figure 8</span>, where the mode of 2 is not representative of the data. The data predominately lies within the 20 to 30 value range. In this case, it would be misleading to use the mode to describe the central tendency of the dataset.
+    </h4>
+    <img src="f8.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 8:</span> Histogram with a mode value isolated from the other data points in the set (Source: Lund Research, 2013).
+    </h5>
+
+  </div>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Distributions</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Datasets are known to follow a normal distribution when most of their values cluster about the mean, and the concentration of values decrease as the values deviate above or below the mean, towards the extremes (Delaitre, 2011). It is often tested to determine whether data follows a normal distribution (as seen in <span style="color: orangered;">Figure 9</span>) since it is a typical assumption underlying various statistical analysis (Lund Research, 2013). The general form of its probability density function is:
+    </h4>
+    <img src="equations/eq2.6.svg" alt="" style="display: block; margin: auto;">
+    <img src="equations/nr6.svg" alt="" style="float: right; margin-top: -26px;">
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The parameter <img src="equations/mu.svg" alt=""> represents the mean or expected value of the distribution and <img src="equations/sigma.svg" alt=""> the standard deviation. <img src="equations/pi.svg" alt=""> is
+    approximately 3.14159, <img src="equations/e.svg" alt=""> (natural logarithm) is approximately 2.71828 and random variable <img src="equations/x.svg" alt=""> denotes the normal random variable (Roland and Moriarty, 2009).
+    <br></br>
+    It is beneficial for analytical studies and especially effective in predicting future outcomes such as inventory demand, by applying normal distribution analysis on previous sales figures. The mean and standard deviation (as discussed in Measures of Spread) of the data is estimated from the analysis to determine the normal distribution of demand for the company’s
+    products or services. This provides the company with an estimated demand in inventory based on the previous year’s
+    demand. During forecasting, the mean may be adjusted to establish a best- and worst-case scenario to refine the
+    predicted outcome (Shpak, 2017).
+    </h4>
+    <img src="f9.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 9:</span> Histogram following a normal distribution modified from (Source: Lund Research, 2013).
+    </h5>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">In any symmetrical distribution, the mean, median and mode have the same value and are located at the centre of the
+    distribution. However, in such a case, the mean is widely considered to be the optimum measure of central tendency
+    because it includes all the values in the dataset for its calculation. The mean is also the only measure to be affected
+    by the change in any given value in the dataset (Lund Research, 2013).
+      <br></br>
+      However, when the data distribution is skewed, as seen in the right-skewed dataset of <span style="color: orangered;">Figure 10</span>, the mean is also
+      pulled in the direction of the skew. Under such circumstances, the median is generally considered to be the most
+      accurate measure of central tendency. As the distribution becomes more skewed, the disparity between the mean and median
+      increases, as well as the emphasis placed on using the median instead of the mean (Lund Research, 2013).
+    </h4>
+    <img src="f10.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 10:</span> Histogram with a right-skewed distribution (Source: Lund Research, 2013).
+    </h5>
+
+
+  </div>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Variable</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">A variable is defined as “any factor, trait, or condition that can exist in differing amounts or types” as stated by (ScienceBuddies, 2015). In statistics, a variable is defined by two main characteristics:
+      <ol style="color: orangered;">
+        <li><span style="color: black;">It describes a person, place, thing, or idea.</span></li>
+        <li><span style="color: black;">Its value can change from one entity to another.</span></li>
+      </ol>
+    Variables are also classified as either quantitative or qualitative, where quantitative refers to numeric and
+    qualitative to categorical. A guideline suggested by (Lund Research, 2013) to determine when to use which measure of central tendency, based on the variable type, is summarised in <span style="color: orangered;">Figure 11</span>.
+
+    </h4>
+
+    <img src="f11.svg" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 11:</span> Guideline for the optimal measure of central tendency adapted from (Source: GraphPad, 2009).
+    </h5>
+  </div>
+  <!--2-->
+  <h1 class="desHead">Measures of Divergence from Normality</h1>
+  <h4 class="introAbout" style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">One of the fundamental tasks of statistical analysis is to characterise the skewness and kurtosis of a dataset. A graphical technique, such as the histogram, is an effective way to visualise the skewness and kurtosis (Na, 2014). These two characteristics are used to test the normality, which indicates whether a dataset is modelled for normal
+  distribution (Help.gooddata.com, 2007).
+  
+  </h4>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Skewness</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Skewness allows for the determination of the
+      size in deviation of a distribution’s shape from the symmetrical structure of a normal distribution. In other words,
+      skewness measures the lack of symmetry. A dataset is symmetrical if the left and right side of the distribution, from
+      the centre point (mean), appears almost identical (Na, 2014). A skewness of zero denotes a perfectly symmetrical
+      distribution since it replicates the shape of a normal distribution. It is important to note that distributions with a
+      skewness value of zero are not always symmetrical (Date, 2019), as seen with the histogram
+      below:
+    
+    </h4>
+    <img src="f12.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 12:</span> Example of an asymmetric distribution with a skewness value of zero (Source: Henry, 2016).
+    </h5>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The skewness values can be interpreted with the following rule of thumb:
+      <ul style="color: orangered;">
+        <li><span style="color: black;">If the skewness is less than -1 or greater than 1, the data are highly skewed.</span></li>
+        <li><span style="color: black;">If the skewness is between -1 and -0.5 or between 0.5 and 1, the data are moderately skewed.</span></li>
+        <li><span style="color: black;">If the skewness is between -0.5 and 0.5, the data are fairly symmetrical (McNeese, 2008).</span></li>
+      </ul>
+    Skewness can also be generally described with the distribution’s mean, mode and median values. In the case where the
+    mean, median and mode are equal (mean = median = mode), the distribution is perfectly normal. If the mean is less than
+    the median and the median less than the mode (mean < median < mode), the distribution is negatively skewed. While when the mean is greater than the median and the median is greater than the mode (mean > median > mode), the distribution is positively skewed (Delaitre, 2011). This is illustrated below in <span style="color: orangered;">Figure 13</span>.
+    </h4>
+    <img src="f13.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 13:</span> a) Negative skewness; b) Normal curve; c) Positive skewness (Source: Lodwal and Durkhure, 2014).
+    </h5>
+
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">If the dataset in use contains the entire population, the skewness is determined as:
+    </h4>
+    <img src="equations/eq2.7.svg" alt="" style="display: block; margin: auto;">
+    <img src="equations/nr7.svg" alt="" style="float: right; margin-top: -34px;">
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">where <img src="equations/xi.svg" alt="" style="vertical-align: middle;"> denotes each score in the population <img src="equations/i1toNn.svg" alt="" style="vertical-align: middle;">, <img src="equations/mu.svg" alt="" style="vertical-align: sub;"> the population mean, <img src="equations/sigma.svg" alt="" style="vertical-align: auto;"> the population standard deviation and <img src="equations/N.svg" alt="" style="vertical-align: auto;"> the population size.
+    <br></br>  
+    In the case of the dataset in use is a simple random sample from a population, the following equation is used:
+
+    </h4>
+    <img src="equations/eq2.8.svg" alt="" style="display: block; margin: auto;">
+    <img src="equations/nr8.svg" alt="" style="float: right; margin-top: -28px;">
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">where <img src="equations/xi.svg" alt="" style="vertical-align: middle;"> denotes each score in the sample <img src="equations/i1ton.svg" alt="" style="vertical-align: middle;">, <img src="equations/xbar.svg" alt="" style="vertical-align: middle;"> the sample mean, <img src="equations/s.svg" alt="" style="vertical-align: middle;"> the sample standard deviation and <img src="equations/nn.svg" alt="" style="vertical-align: middle;">
+    the sample size (van den Berg, 2019).
+    </h4>
+
+  </div>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Kurtosis</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Originally kurtosis was thought to be a measure of the “peakedness” of a distribution, but in reality, it is a measure
+    of the “tailedness” (McNeese, 2008). It defines how severely the tails of a distribution varies from the tails of a
+    normal distribution. Therefore, it identifies whether extreme values are contained within the tails of a given
+    distribution (CFI, no date). <span style="color: orangered;">Figure 14</span> illustrates these “tails”.
+    </h4>
+    <img src="f14.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 14:</span> An rough illustration of the tails of a distribution, adapted from
+      (Source: CFI, no date).
+    </h5>
+    <img src="equations/eq2.9.svg" alt="" style="display: block; margin: auto;">
+    <img src="equations/nr9.svg" alt="" style="float: right; margin-top: -34px;">
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Where X_i is the ith X value, X ̅ the mean of the sample, n the size of the sample and s the standard deviation. With <span style="color: orangered;">Equation 9</span>, the kurtosis of a normal distribution is 3.
+    <br></br>
+    However, most software packages, including Microsoft Excel, do not make use of this equation but rather the equation
+    below.
+
+    </h4>
+    <img src="equations/eq2.10.svg" alt="" style="display: block; margin: auto; ">
+    <img src="equations/nr10.svg" alt="" style="float: right; margin-top: -34px;" >
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;"><span style="color: orangered;">Equation 10</span> considers the sample size and subtracts 3 from the kurtosis, thus a normal distribution now has a kurtosis
+    value of zero. This equation is referred to as the excess kurtosis or simple kurtosis. Now a dataset with a positive
+    kurtosis (<img src="equations/xi.svg" alt="" style="vertical-align: middle;"> > 0) indicates that it has more <img src="equations/xi.svg" alt="" style="vertical-align: middle;"> values in the tails than a normal distribution, while a negative
+    kurtosis (<img src="equations/xi.svg" alt="" style="vertical-align: middle;"> < 0) indicates that it has less <img src="equations/xi.svg" alt="" style="vertical-align: middle;"> values in the tails than a normal distribution.
+    <br></br>
+    <img src="equations/xi.svg" alt="" style="vertical-align: middle;"> values that are located near the mean of the distribution have a particularly low contribution to the kurtosis due
+    to kurtosis focusing on the combined capacity of the tails. Therefore, the contribution of the <img src="equations/xi.svg" alt="" style="vertical-align: middle;"> values positioned in
+    the tails are considerably higher to the kurtosis.
+    <br></br>
+    The excess kurtosis of a distribution defines the type of kurtosis, as seen in <span style="color: orangered;">Figure 15</span>, with the excess kurtosis
+    ranging in values from negative to positive. The normal distribution is often used as a measurement for kurtosis. In
+    general, it is assumed that when a distribution is close to zero, the data is normally distributed, which is referred to
+    as a mesokurtic distribution (McNeese, 2008). If the kurtosis is greater than zero, it is known as a leptokurtic
+    distribution. This indicates a positive excess kurtosis, which expresses that the distribution has heavy tails and is
+    indicative of large outliers. 
+    <br></br>
+    In the finance sector, high investment risk is associated with a large kurtosis, which
+    indicates high probabilities of extremely- low or -high returns. On the other hand, a moderate level of risk is
+    signified by a small kurtosis (negative excess kurtosis) as the probabilities of extreme returns are fairly low. This
+    type of kurtosis is recognised as a platykurtic distribution, which reveals that a distribution has flat tails (small
+    outliers). This distribution is more sensible for investors compared to a leptokurtic distribution (CFI, no date).
+    </h4>
+    <img src="f15.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 15:</span> a) Mesokurtic; b) Leptokurtic; c) Platykurtic adapted from (Source: CFI, no date).
+    </h5>
+
+  </div>
+  
+  <!--3-->
+  <h1 class="desHead">Measures of Spread</h1>
+  <h4 class="introAbout" style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Measures of spread depict the similarity or variance in a sample or population. It provides an overall description of a
+  dataset by working in combination with a measure of central tendency, such as the mode, median or mean. For example, it
+  equips us with a better understanding of how well the mean represents that dataset. It is unfavourable for a dataset to
+  contain a large spread of values since it indicates a large variation between individual data values. This reduces the
+  mean’s ability to accurately represent the data. Furthermore, a small disparity between separate data groups is often
+  preferred in research as indicates similarity (Leard statistics, 2018).
+  <br></br>
+  The most well-known measures of spread are range, interquartile range (IQR), absolute deviation, variance and standard
+  deviation.
+
+  </h4>
+ 
+
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Range</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4  style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The range is the simplest measure of spread and describes the difference between the highest and lowest values in a
+    dataset (maximum value – minimum value). It is used to set the boundaries of a dataset to determine whether a value
+    crosses the critically low or high threshold, which is commonly used to detect errors when entering data (Leard
+    statistics, 2018).
+    </h4>
+  </div>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Interquartile Range</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4  style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Quartiles divide the dataset into quarters, similar to the way the median breaks it in half, and are used to analyse the
+    spread of the data. <span style="color: orangered;">Figure 16</span> illustrates the statistical distribution between upper quartiles (75%) – Q3 and lower
+    quartiles (25%) – Q1 as well as the median (50%) – Q2.
+    </h4>
+    <img src="f16.JPG" alt="" style="display: block; margin-left: auto;margin-right: auto; max-width: 100%; ">
+    <h5 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif; margin-top: 10px; "><span
+        style="color: orangered;">Figure 16:</span> Measure of statistical dispersion via interquartile range adapted from (Source: Kumar, 2018).
+    </h5>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Quartiles are much less affected by outliers or a skewed dataset than other measures of spread such as the mean and
+    standard deviation. Therefore, it is often reported that Quartiles, along with the median, are the preferred measures of
+    spread and central tendency under these circumstances. An established way of expressing quartiles is known as an
+    interquartile range. This range describes the centre-half of the values in the distribution and is calculated by
+    determining the difference between the third quartile (Q3) and the first quartile (Q1) as depicted in <span style="color: orangered;">Figure 16</span>.
+    <br></br>
+    Although quartiles are considered to be a good measure of spread, they are fairly limited considering that they do not
+    take into account all the values in the dataset. To compensate for this lack of comprehensiveness it is suggested to
+    determine the absolute deviation, variation and standard deviation since these measures of spread incorporate all the
+    data values and are thus more representative of the data spread (Leard statistics, 2018).
+    </h4>
+
+  </div>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Absolute Deviation</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The absolute deviation is perhaps the most rudimentary form of calculating the deviation of a data value from the mean
+    of a dataset. It involves taking the mean and subtracting it from value each data value. Data values below the mean have
+    a negative deviation and values above the mean result in a positive deviation.
+    <br></br>
+    There is however a problem caused by the existence of these negative and positive deviations. When adding them, it leads
+    to a total deviation of zero since these values cancel each other out. Considering that the primary concern is the
+    deviation value and not whether these deviations are above or below the mean, the minus sign is disregarded by taking
+    the absolute value, hence the absolute deviation. This process is formulated below in <span style="color: orangered;">Equation 11</span>.
+    </h4>
+    <img src="equations/eq2.11.svg" alt="" style="display: block; margin: auto; ">
+    <img src="equations/nr11.svg" alt="" style="float: right; margin-top: -26px;">
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Where <img src="equations/xi.svg" alt="" style="vertical-align: middle;"> denotes the ith value in the dataset, <img src="equations/mu.svg" alt="" style="vertical-align: middle;"> the mean value, <img src="equations/N.svg" alt="" style="vertical-align: middle;"> the size of the population (number of values in the
+    dataset) and ∑ the sum of. Replace <img src="equations/N.svg" alt="" style="vertical-align: middle;"> with <img src="equations/n-1.svg" alt="" style="vertical-align: middle;"> (in <span style="color: orangered;">Equation 11</span>) where n is the sample mean and replace <img src="equations/mu.svg" alt="" style="vertical-align: middle;"> with <img src="equations/xbar.svg" alt="" style="vertical-align: middle;">
+    (sample mean) to determine the sample mean absolute deviation (Leard statistics, 2018).
+    </h4>
+
+
+
+  </div>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Variance</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The variance is an additional method used for gauging the deviation of data values from the dataset’s mean. The main
+    difference between the variance and the absolute mean is the way in which the variance achieves its positive values.
+    Instead of taking the absolute value of each deviation, it squares these values.
+    </h4>
+    <img src="equations/eq2.12.svg" alt="" style="display: block; margin: auto; ">
+    <img src="equations/nr12.svg" alt="" style="float: right; margin-top: -26px;">
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The variance is an additional method used for
+    gauging the deviation of data values from the dataset’s mean. The main
+    difference between the variance and the absolute mean is the way in which the variance achieves its positive values.
+    Instead of taking the absolute value of each deviation, it squares these values.
+    </h4>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">
+    Where <img src="equations/xi.svg" alt="" style="vertical-align: middle;"> denotes the ith value in the dataset, <img src="equations/mu.svg" alt="" style="vertical-align: sub;"> the mean value, <img src="equations/N.svg" alt="" style="vertical-align: auto;"> the size of the population (number of values in the
+    dataset) and ∑ the sum of. Replace <img src="equations/N.svg" alt="" style="vertical-align: middle;"> with <img src="equations/n-1.svg" alt="" style="vertical-align: auto;"> (in <span style="color: orangered;">Equation 12</span>) where <img src="equations/nn.svg" alt="" style="vertical-align: middle;"> is the sample mean and replace <img src="equations/mu.svg" alt="" style="vertical-align: sub;"> with <img src="equations/xbar.svg" alt="" style="vertical-align: middle;">
+    (sample mean) to determine the sample variance.</h4>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">The variance is particularly helpful with measuring the spread of data. If the data values of a dataset are broadly
+    dispersed, the variance value will be large. Conversely, the variance value will be small if the data values are
+    distributed within close proximity around the mean. There are however potential complications that come with using the
+    variance. The first problem is caused by the deviations of data values from the mean being squared. This places a larger
+    weight on extreme values. As a result outliers in the dataset can drastically increase the variation and it is therefore
+    considered good practice to remove outliers from a dataset to garner a better representation and understanding when
+    analysing it.
+    </h4>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">
+    The second problem with variance is that it delivers inconsistency since it does not bear the same units as the data
+    values. This prohibits it from being placed within frequency distributions and cannot be directly associated with the
+    values from the dataset (Leard statistics, 2018). The workaround to this problem is to use the coefficient of variation
+    (CV). CV is a measure of relative variability and enables the comparison of variability across variables measured in
+    different units. Below, in <span style="color: orangered;">Equation 13</span>, the sample notation is used but could also be computed for the population by
+    replacing <img src="equations/s.svg" alt="" style="vertical-align: auto;"> with <img src="equations/sigma.svg" alt="" style="vertical-align: middle;">.</h4>
+    <img src="equations/eq2.13.svg" alt="" style="display: block; margin: auto; ">
+    <img src="equations/nr13.svg" alt="" style="float: right; margin-top: -26px;">
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">It is important to note that the CV cannot be calculated with a dataset that has a mean value of zero (<img src="equations/xbar.svg" alt="" style="vertical-align: auto;">, <img src="equations/mu.svg" alt="" style="vertical-align: middle;"> = 0) since
+    division by zero is not allowed. A dataset with positive and negative values can produce a misleading CV value since it
+    may generate a mean with a value close to zero (even though the dataset my have abroad range). It is therefore
+    favourable to use the CV with a dataset containing only positive values.
+    </h4>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">An example of an identical dataset expressed in feet and inches is used to showcase the practicality of the CV. The
+    dataset has a mean of 5.5566 feet and a standard deviation of 0.2288 feet. In inches, the mean is 66.6790 and the
+    standard deviation is 2.7453. Applying <span style="color: orangered;">Equation 13</span> results in the following:
+    </h4>
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Data in feet = 5.5566/0.2288 = 24.2858
+      <br>
+    Data in inches = 66.6790/2.7453 = 24.2884
+    <br><br>
+    It is evident that the CV is not affected by the change in units and apart from round errors, it produces the same
+    result (Boslaugh, 2012).
+    </h4>
+
+
+  </div>
+  <button class="desPan" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">Standard Deviation</button>
+  <div class="panelG">
+    <!--Put contents here-->
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Under normal circumstances, it is favoured to determine the standard deviation of the population of the dataset due to
+    the population containing all the data values of interest. However, it is not always possible and therefore a sample
+    might be provided instead. The sample is often used in statistics to generalise (estimate) the population and the
+    standard deviation is of no exclusion.
+    <br><br>
+    The sample standard deviation is formulated as:
+    </h4>
+    <img src="equations/eq2.14.svg" alt="" style="display: block; margin: auto; ">
+    <img src="equations/nr14.svg" alt="" style="float: right; margin-top: -32px;">
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Where s denotes the sample standard deviation, ∑
+      the sum of, <img src="equations/xi.svg" alt="" style="vertical-align: middle;"> the <img src="equations/ith.svg" alt="" style="vertical-align: middle;"> value in the sample, <img
+        src="equations/xbar.svg" alt="" style="vertical-align: middle;"> the sample mean and <img src="equations/nn.svg"
+        alt="" style="vertical-align: middle;">
+      the sample size. The standard deviation of the population is determined with the equation below:
+    </h4>
+    <img src="equations/eq2.15.svg" alt="" style="display: block; margin: auto; ">
+    <img src="equations/nr15.svg" alt="" style="float: right; margin-top: -32px;">
+    <h4 style="line-height: 1.6;font-family: Arial, Helvetica, sans-serif;">Where σ denotes the population standard deviation, ∑ the sum of, <img src="equations/xi.svg" alt="" style="vertical-align: middle;"> the ith value in the sample, <img src="equations/mu.svg" alt="" style="vertical-align: middle;"> the population mean
+    and <img src="equations/N.svg" alt="" style="vertical-align: middle;"> the population size. It should be noted that the standard deviation is used in combination with the mean to
+    summarise continuous data and not categorical data. Furthermore, it is commonly only applicable when continuous data is
+    not substantially skewed or contains numerous outliers (Leard statistics, 2018).
+    </h4>
+
+
+  </div>
+  <h2 class="referencesHead">References</h2>
+  <h4 class="referencesBody">
+    Boslaugh, S., 2012. Statistics in a Nutshell, 2nd ed. O’Reilly Media.
+    <br></br>
+    CFI, n.d. Kurtosis - Definition, Excess Kurtosis, and Types of Kurtosis [WWW Document]. CFI. URL
+    <a href="https://corporatefinanceinstitute.com/resources/knowledge/other/kurtosis/">https://corporatefinanceinstitute.com/resources/knowledge/other/kurtosis/</a> (accessed 5.3.20).
+    <br></br>
+    Date, S., 2019. Testing for Normality using Skewness and Kurtosis - Towards Data Science [WWW Document]. Towar. data
+    Sci. URL <a href="https://towardsdatascience.com/testing-for-normality-using-skewness-and-kurtosis-afd61be860">https://towardsdatascience.com/testing-for-normality-using-skewness-and-kurtosis-afd61be860</a> (accessed 4.26.20).
+    <br></br>
+    Delaitre, A., 2011. Normal Distribution - IB Geography [WWW Document]. IB Geogr. URL
+    <a href="https://www.geoib.com/normal-distribution.html">https://www.geoib.com/normal-distribution.htmlhttps://www.geoib.com/normal-distribution.html</a> (accessed 4.15.20).
+    <br></br>
+    Dhand, N., 2015. Descriptive Analysis: Take it easy! – Statulator [WWW Document]. Statulator. URL
+    <a href="http://www.statulator.com/blog/descriptive-analysis-take-it-easy/">http://www.statulator.com/blog/descriptive-analysis-take-it-easy/</a> (accessed 4.11.20).
+    <br></br>
+    Gibson, P., n.d. Types of Data Analysis | Tutorial by Chartio [WWW Document]. Chartio. URL
+    <a href="https://chartio.com/learn/data-analytics/types-of-data-analysis/">https://chartio.com/learn/data-analytics/types-of-data-analysis/</a> (accessed 4.11.20).
+    <br></br>
+    Gooch, J.W., 2011. Measure of Central Tendency, in: Encyclopedic Dictionary of Polymers. pp. 987–987.
+    <br></br>
+    GraphPad, S., 2009. What is the difference between ordinal, interval and ratio variables? Why should I care? [WWW
+    Document]. GraphPad. <a href="https://www.graphpad.com/support/faq/what-is-the-difference-between-ordinal-interval-and-ratio-variables-why-should-i-care/">https://www.graphpad.com/support/faq/what-is-the-difference-between-ordinal-interval-and-ratio-variables-why-should-i-care/</a> (accessed 4.18.20).
+    <br></br>
+    Help.gooddata.com, 2007. Normality Testing - Skewness and Kurtosis - Documentation [WWW Document]. Good Data Corp. URL
+    <a href="https://help.gooddata.com/doc/en/reporting-and-dashboards/maql-analytical-query-language/maql-expression-reference/aggregation-functions/statistical-functions/predictive-statistical-use-cases/normality-testing-skewness-and-kurtosis">https://help.gooddata.com/doc/en/reporting-and-dashboards/maql-analytical-query-language/maql-expression-reference/aggregation-functions/statistical-functions/predictive-statistical-use-cases/normality-testing-skewness-and-kurtosis</a>
+    (accessed 4.21.20).
+    <br></br>
+    Henry, 2016. probability - Example of a Distribution that is not symmetric, but has a skewness of zero. - Mathematics
+    Stack Exchange [WWW Document]. Stack Exch. URL
+    <a href="https://math.stackexchange.com/questions/1941786/example-of-a-distribution-that-is-not-symmetric-but-has-a-skewness-of-zero">https://math.stackexchange.com/questions/1941786/example-of-a-distribution-that-is-not-symmetric-but-has-a-skewness-of-zero</a>
+    (accessed 4.26.20).
+    <br></br>
+    Kumar, A., 2018. Introduction to Descriptive Statistics and Probability for Data Science [WWW Document]. Towards. data Sci.
+    URL <a href="https://towardsdatascience.com/intro-to-descriptive-statistics-and-probability-for-data-science-8effec826488">https://towardsdatascience.com/intro-to-descriptive-statistics-and-probability-for-data-science-8effec826488</a>
+    (accessed 4.14.20).
+    <br></br>
+    Laerd, 2018. Understanding Descriptive and Inferential Statistics | Laerd Statistics [WWW Document]. Laerd Stat. URL
+    <a href="https://statistics.laerd.com/statistical-guides/descriptive-inferential-statistics.php">https://statistics.laerd.com/statistical-guides/descriptive-inferential-statistics.php</a> (accessed 4.11.20).
+    <br></br>
+    Leard statistics, 2018. Measures of Spread | How and when to use measures of spread | Laerd Statistics [WWW Document].
+    Laerd Stat. URL <a href="https://statistics.laerd.com/statistical-guides/measures-of-spread-range-quartiles.php">https://statistics.laerd.com/statistical-guides/measures-of-spread-range-quartiles.php</a> (accessed
+    5.12.20).
+    <br></br>
+    Lodwal, A., Durkhure, P., 2014. ACOUSTIC EMISSION TESTS ON THE ANALYSIS OF CRACKED SHAFTS OF DIFFERENT CRACK DEPTHS -
+    Scientific Figure on ResearchGate [WWW Document]. RearchGate. URL
+    <a href="https://www.researchgate.net/figure/a-Negative-skewness-b-Normal-curve-c-Positive-skewness-Durkhure-and-Lodwal-2014_fig5_294890337">https://www.researchgate.net/figure/a-Negative-skewness-b-Normal-curve-c-Positive-skewness-Durkhure-and-Lodwal-2014_fig5_294890337</a>
+    (accessed 4.15.20).
+    <br></br>
+    Lund Research, 2013. Mean, Mode and Median - Measures of Central Tendency - When to use with Different Types of Variable
+    and Skewed Distributions | Laerd Statistics [WWW Document]. Laerd Stats. URL
+    <a href="https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php">https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php</a> (accessed 4.12.20).
+    <br></br>
+    McNeese, B., 2008. Are the Skewness and Kurtosis Useful Statistics? | BPI Consulting [WWW Document]. SPC Excel. URL
+    <a href="https://www.spcforexcel.com/knowledge/basic-statistics/are-skewness-and-kurtosis-useful-statistics">https://www.spcforexcel.com/knowledge/basic-statistics/are-skewness-and-kurtosis-useful-statistics</a> (accessed 4.26.20).
+    <br></br>
+    Na, 2014. 1.3.5.11. Measures of Skewness and Kurtosis [WWW Document]. NIST SEMATECH. URL
+    <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm">https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm</a> (accessed 4.21.20).
+    <br></br>
+    Roland, H.E., Moriarty, B., 2009. Normal Distribution, in: System Safety Engineering and Management. pp. 140–144.
+    <br></br>
+    ScienceBuddies, 2015. Variables in Your Science Fair Project [WWW Document]. Proj. Guid. URL
+    <a href="https://www.sciencebuddies.org/science-fair-projects/science-fair/variables">https://www.sciencebuddies.org/science-fair-projects/science-fair/variables</a> (accessed 4.18.20).
+    <br></br>
+    Shodganga, 2008. Descriptive Analysis 7.0 Chapter Overview.
+    <br></br>
+    Shpak, S., 2017. Normal Distribution Uses for Inventory Forecasting [WWW Document]. azcentral. URL
+    <a href="https://yourbusiness.azcentral.com/normal-distribution-uses-inventory-forecasting-27813.html">https://yourbusiness.azcentral.com/normal-distribution-uses-inventory-forecasting-27813.html</a> (accessed 4.16.20).
+    <br></br>
+    van den Berg, R.G., 2019. Skewness - Quick Introduction, Examples & Formulas [WWW Document]. SPSS Tutorials. URL
+    <a href="https://www.spss-tutorials.com/skewness/">https://www.spss-tutorials.com/skewness/</a> (accessed 5.3.20).
+    
+  
+  </h4>
+  
+  <script>
+    var acc = document.getElementsByClassName("desPan");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("activeP");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+  <script src="https://unpkg.com/d3@5.16.0/dist/d3.min.js"></script>
+  <!-- <input type="file" id="fileinput" />
+        <div style="position: relative;">
+          <canvas id="lineChart" width="200px" height="80px"></canvas>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+        <script type="module" src="main.js"></script>
+        -->
+  </div>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+  </script>
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+  <script>
+    // Get the container element
+    var btnContainer = document.getElementById("myNavbar");
+
+    // Get all buttons with class="btn" inside the container
+    var btns = btnContainer.getElementsByClassName("navBtn");
+
+    // Loop through the buttons and add the active class to the current/clicked button
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+  </script>
+</html>
